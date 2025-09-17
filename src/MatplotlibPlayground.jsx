@@ -175,8 +175,9 @@ if not os.path.exists('/data'):
                     <div className="text-sm text-gray-600">Runs Python & Matplotlib in your browser</div>
                 </header>
 
-                <div className="grid grid-cols-12 gap-4">
-                    <aside className="col-span-3 bg-white p-3 rounded-lg shadow-sm">
+                {/* Responsive grid: mobile=stack, md=2cols, lg=3cols */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4">
+                    <aside className="bg-white p-3 rounded-lg shadow-sm md:col-span-1 lg:col-span-3 overflow-auto">
                         <div className="mb-3">
                             <label className="block text-sm font-medium mb-1">Upload CSV files</label>
                             <input type="file" accept=".csv" multiple onChange={handleFileUpload} />
@@ -231,10 +232,10 @@ if not os.path.exists('/data'):
                         </div>
                     </aside>
 
-                    <main className="col-span-6 bg-white p-3 rounded-lg shadow-sm flex flex-col items-center justify-center">
+                    <main className="bg-white p-3 rounded-lg shadow-sm flex flex-col items-center justify-center md:col-span-1 lg:col-span-6">
                         <div className="w-full h-full flex flex-col items-center">
                             <div className="w-full text-center text-sm text-gray-500 mb-2">Visualization</div>
-                            <div ref={outputRef} className="w-full h-96 bg-gray-100 rounded flex items-center justify-center overflow-hidden">
+                            <div ref={outputRef} className="w-full h-64 md:h-96 bg-gray-100 rounded flex items-center justify-center overflow-hidden">
                                 {imageSrc ? (
                                     <img src={imageSrc} alt="plot" className="max-h-full max-w-full" />
                                 ) : (
@@ -244,7 +245,7 @@ if not os.path.exists('/data'):
                         </div>
                     </main>
 
-                    <section className="col-span-3 bg-white p-3 rounded-lg shadow-sm flex flex-col">
+                    <section className="bg-white p-3 rounded-lg shadow-sm flex flex-col md:col-span-2 lg:col-span-3 overflow-auto">
                         <div className="flex items-center justify-between mb-2">
                             <div className="text-sm font-medium">Code editor</div>
                             <div className="text-xs text-gray-500">Python / Matplotlib</div>
@@ -252,7 +253,7 @@ if not os.path.exists('/data'):
                         <textarea
                             value={code}
                             onChange={(e) => setCode(e.target.value)}
-                            className="flex-1 w-full p-2 border rounded font-mono text-sm h-96 resize-none"
+                            className="flex-1 w-full p-2 border rounded font-mono text-sm h-48 md:h-96 resize-none"
                         />
                         <div className="mt-2 text-xs text-gray-500">Tip: use <code>load_csv('your.csv')</code> to access uploaded files.</div>
                     </section>
